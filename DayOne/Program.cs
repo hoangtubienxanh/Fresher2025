@@ -61,7 +61,7 @@ while (!ApplicationHost.Cancelled)
                 else
                 {
                     Console.WriteLine(string.Join(Environment.NewLine,
-                        cars.Where(t => Equals(t.Manufacturer, fuel))));
+                        cars.Where(t => Equals(t.Fuel, fuel))));
                 }
 
                 break;
@@ -139,10 +139,13 @@ static bool CreateCarForm(out Car car)
 
     Console.WriteLine("Enter Year:");
     Console.Write("> ");
-    if (!int.TryParse(Console.ReadLine(), out var year))
+    if (!int.TryParse(Console.ReadLine(), out var year)
+        || year > DateTime.Now.Year
+        || year < DateTime.MinValue.Year)
     {
         return false;
     }
+
 
     car.Year = year;
     return true;

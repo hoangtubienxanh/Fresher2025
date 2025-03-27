@@ -99,14 +99,14 @@ static int CreateYearForm()
     int year;
     while (true)
     {
-        Console.Write($"Enter car year (e.g., 2020): ");
+        Console.Write("Enter car year (e.g., 2020): ");
         var yearInput = Console.ReadLine();
         if (int.TryParse(yearInput, out year) && year >= 1886 && year <= DateTime.Now.Year)
         {
             break;
         }
 
-        Console.WriteLine($"Invalid year! Please enter a valid year between 1886 and the current year.");
+        Console.WriteLine("Invalid year! Please enter a valid year between 1886 and the current year.");
     }
 
     return year;
@@ -117,7 +117,7 @@ static DateTime CreateMaintainanceDateForm()
     DateTime lastMaintenanceDate;
     while (true)
     {
-        Console.Write($"Enter last maintenance date (yyyy-MM-dd): ");
+        Console.Write("Enter last maintenance date (yyyy-MM-dd): ");
         var dateInput = Console.ReadLine();
         if (DateTime.TryParseExact(dateInput, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None,
                 out lastMaintenanceDate))
