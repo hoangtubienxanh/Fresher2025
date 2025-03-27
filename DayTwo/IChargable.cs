@@ -1,4 +1,4 @@
-﻿interface IChargable
+﻿internal interface IChargable
 {
     void Charge(DateTime timeOfCharge);
 }

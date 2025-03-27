@@ -1,4 +1,4 @@
-﻿interface IFuelable
+﻿internal interface IFuelable
 {
     void Refuel(DateTime timeOfRefuel);
 }
