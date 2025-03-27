@@ -2,20 +2,20 @@
 
 public class Car
 {
-    public string? Manufacturer { get; set; }
-    public string? Model { get; set; }
-    public int Year { get; set; }
-    public FuelType Fuel { get; set; }
-
     public enum FuelType
     {
         Electric = 1,
         Fuel = 2
     }
 
+    public string? Manufacturer { get; set; }
+    public string? Model { get; set; }
+    public int Year { get; set; }
+    public FuelType Fuel { get; set; }
+
     public override string ToString()
     {
-        StringBuilder stringBuilder = new StringBuilder();
+        var stringBuilder = new StringBuilder();
         stringBuilder.Append("Car");
         stringBuilder.Append(" { ");
         if (PrintMembers(stringBuilder))
@@ -27,7 +27,7 @@ public class Car
         return stringBuilder.ToString();
     }
 
-    protected virtual bool PrintMembers(StringBuilder builder)
+    private bool PrintMembers(StringBuilder builder)
     {
         builder.Append("Manufacturer = ");
         builder.Append((object)Manufacturer);

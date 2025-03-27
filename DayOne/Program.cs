@@ -18,7 +18,7 @@ while (!ApplicationHost.Cancelled)
     var success = int.TryParse(Console.ReadLine(), out var command);
     if (success && command is <= 6 and >= 1)
     {
-        bool validatedState = true;
+        var validatedState = true;
         switch (command)
         {
             case 1:
@@ -86,6 +86,9 @@ while (!ApplicationHost.Cancelled)
                     }
                 }
 
+                break;
+            case 6:
+                ApplicationHost.Cancel();
                 break;
         }
 
