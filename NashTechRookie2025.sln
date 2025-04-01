@@ -1,8 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayOne", "DayOne\DayOne.csproj", "{D7581ECA-F9A7-449A-BC4F-E566DCBD9044}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayOne", "projects\DayOne\DayOne.csproj", "{D7581ECA-F9A7-449A-BC4F-E566DCBD9044}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayTwo", "DayTwo\DayTwo.csproj", "{70E22B14-7B15-46D7-A908-36C04BF9EAD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayTwo", "projects\DayTwo\DayTwo.csproj", "{70E22B14-7B15-46D7-A908-36C04BF9EAD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RookiesWebApi", "projects\RookiesWebApi\RookiesWebApi.csproj", "{38965E67-CF51-4563-B33D-A3B64DBAE4B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +20,9 @@ Global
 		{70E22B14-7B15-46D7-A908-36C04BF9EAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70E22B14-7B15-46D7-A908-36C04BF9EAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70E22B14-7B15-46D7-A908-36C04BF9EAD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38965E67-CF51-4563-B33D-A3B64DBAE4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38965E67-CF51-4563-B33D-A3B64DBAE4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38965E67-CF51-4563-B33D-A3B64DBAE4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38965E67-CF51-4563-B33D-A3B64DBAE4B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

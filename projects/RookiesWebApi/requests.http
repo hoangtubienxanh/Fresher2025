@@ -1,0 +1,25 @@
+@RookiesWebApi_HostAddress = http://localhost:5258
+
+### Should 404 Not Found
+GET {{RookiesWebApi_HostAddress}}/
+
+### Define the new Route that to include “NashTech” before controller then action.
+GET {{RookiesWebApi_HostAddress}}/NashTech/Rookies/Index
+Accept: application/json
+
+### Action to return a list of members who is Male
+GET {{RookiesWebApi_HostAddress}}/NashTech/Rookies/GetMales
+Accept: application/json
+
+### Action to return the oldest one based on “Age”
+GET {{RookiesWebApi_HostAddress}}/NashTech/Rookies/GetEldestMember
+
+### Action to return a new list that contains Full Name only (
+GET {{RookiesWebApi_HostAddress}}/NashTech/Rookies/GetAllMembersName
+
+### Action to redirect to the following actions based on the value provided by end user via Query
+GET {{RookiesWebApi_HostAddress}}/NashTech/Rookies/GetMembersByBirthYearRequirements?opType=Equals
+
+### Action to return the excel file that contains dummy data of list persons
+GET {{RookiesWebApi_HostAddress}}/NashTech/Rookies/ExportAsExcel
+
