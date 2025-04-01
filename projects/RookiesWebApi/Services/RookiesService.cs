@@ -16,9 +16,14 @@ public class RookiesService(List<Person> backingStore) : IRookiesService
 
     public Person? GetOldestMember()
     {
-        // Makes sense to sort first, see link:
-        // https://github.com/dotnet/runtime/blob/bbc50e511150368fd10f56783c48aa3a04f1f5d3/src/libraries/System.Linq/src/System/Linq/Max.cs#L476
-        return backingStore.OrderBy(x => x.DateOfBirth).MaxBy(x => x.DateOfBirth);
+        if (backingStore.Count == 0)
+            return null;
+        
+        return backingStore
+            .Select((item, index) => (index, item))
+            .OrderBy(x => x.index)
+            .MaxBy(x => x.item.DateOfBirth)
+            .item;
     }
 
     public IReadOnlyList<string> GetAllMembersName()
