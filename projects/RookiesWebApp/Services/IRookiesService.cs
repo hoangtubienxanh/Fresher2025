@@ -4,13 +4,15 @@ namespace RookiesWebApp.Services;
 
 public interface IRookiesService
 {
-    IReadOnlyList<Person> GetAllMembers();
+    PaginatedList<Person> GetAllMembers(PaginationRequest paginationRequest);
     void CreateMember(Person person);
     Person? GetMemberById(int id);
-    void UpdateMemberById(int id, Person personModel);
-    void RemoveMember(Person person);
-    IReadOnlyList<Person> GetAllMaleMembers();
+    void UpdateMemberById(int id, Person person);
+    void DeleteMember(Person person);
+    PaginatedList<Person> GetAllMaleMembers(PaginationRequest paginationRequest);
     Person? GetOldestMember();
     IReadOnlyList<string> GetAllMembersName();
-    IReadOnlyList<Person> GetAllMembersWithPredicate(ComparisonOperatorType specification);
+
+    PaginatedList<Person> GetAllMembersWithPredicate(ComparisonOperatorType specification,
+        PaginationRequest paginationRequest);
 }

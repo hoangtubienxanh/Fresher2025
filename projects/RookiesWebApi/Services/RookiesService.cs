@@ -17,8 +17,10 @@ public class RookiesService(List<Person> backingStore) : IRookiesService
     public Person? GetOldestMember()
     {
         if (backingStore.Count == 0)
+        {
             return null;
-        
+        }
+
         return backingStore
             .MaxBy(x => x.DateOfBirth);
     }

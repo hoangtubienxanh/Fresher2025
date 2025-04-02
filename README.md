@@ -30,3 +30,9 @@ Access the API at:
 - Swagger UI: http://localhost:5258/swagger (when running in development)
 
 Rider users can test http calls using [requests](projects/RookiesWebApi/requests.http)
+
+### RookiesWebApp
+```bash
+cd projects/RookiesWebApp
+dotnet run
+```

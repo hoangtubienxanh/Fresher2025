@@ -4,9 +4,14 @@ namespace RookiesWebApp.Services;
 
 public class RookiesService(List<Person> backingStore) : IRookiesService
 {
-    public IReadOnlyList<Person> GetAllMembers()
+    public PaginatedList<Person> GetAllMembers(PaginationRequest paginationRequest)
     {
-        return backingStore;
+        return backingStore.Create(paginationRequest.PageIndex, paginationRequest.PageSize);
+    }
+
+    public Person? GetMemberById(int id)
+    {
+        return backingStore.FirstOrDefault(x => x.Id == id);
     }
 
     public void CreateMember(Person person)
@@ -19,54 +24,53 @@ public class RookiesService(List<Person> backingStore) : IRookiesService
         backingStore.Add(person);
     }
 
-    public Person? GetMemberById(int id)
-    {
-        return backingStore.FirstOrDefault(x => x.Id == id);
-    }
-
-    public void UpdateMemberById(int id, Person personModel)
+    public void UpdateMemberById(int id, Person person)
     {
         var existingPerson = backingStore.First(x => x.Id == id);
 
-        existingPerson.FirstName = personModel.FirstName;
-        existingPerson.LastName = personModel.LastName;
-        existingPerson.DateOfBirth = personModel.DateOfBirth;
-        existingPerson.PhoneNumber = personModel.PhoneNumber;
-        existingPerson.Gender = string.Equals(personModel.Gender, "Male", StringComparison.OrdinalIgnoreCase)
+        existingPerson.FirstName = person.FirstName;
+        existingPerson.LastName = person.LastName;
+        existingPerson.DateOfBirth = person.DateOfBirth;
+        existingPerson.PhoneNumber = person.PhoneNumber;
+        existingPerson.Gender = string.Equals(person.Gender, "Male", StringComparison.OrdinalIgnoreCase)
             ? "Male"
             : "Female";
-        existingPerson.BirthPlace = personModel.BirthPlace;
-        existingPerson.IsGraduated = personModel.IsGraduated;
+        existingPerson.BirthPlace = person.BirthPlace;
+        existingPerson.IsGraduated = person.IsGraduated;
     }
 
-    public void RemoveMember(Person person)
+    public void DeleteMember(Person person)
     {
         backingStore.Remove(person);
     }
 
-    public IReadOnlyList<Person> GetAllMaleMembers()
+    public PaginatedList<Person> GetAllMaleMembers(PaginationRequest paginationRequest)
     {
-        return backingStore.Where(x => x.Gender is "Male").OrderBy(x => x.DateOfBirth).ToList();
+        return backingStore
+            .Where(x => x.Gender is "Male")
+            .OrderBy(x => x.DateOfBirth)
+            .ToList()
+            .Create(paginationRequest.PageIndex, paginationRequest.PageSize);
     }
 
     public Person? GetOldestMember()
     {
         if (backingStore.Count == 0)
+        {
             return null;
+        }
 
-        return backingStore
-            .Select((item, index) => (index, item))
-            .OrderBy(x => x.index)
-            .MaxBy(x => x.item.DateOfBirth)
-            .item;
+        return backingStore.MaxBy(x => x.DateOfBirth);
     }
 
     public IReadOnlyList<string> GetAllMembersName()
     {
-        return backingStore.Select(x => $"{x.FirstName} {x.LastName}").ToList();
+        return backingStore.Select(x => $"{x.FirstName} {x.LastName}")
+            .ToList();
     }
 
-    public IReadOnlyList<Person> GetAllMembersWithPredicate(ComparisonOperatorType specification)
+    public PaginatedList<Person> GetAllMembersWithPredicate(ComparisonOperatorType specification,
+        PaginationRequest paginationRequest)
     {
         var query = backingStore.OrderBy(x => x.DateOfBirth);
         List<Person> members = specification switch
@@ -83,6 +87,6 @@ public class RookiesService(List<Person> backingStore) : IRookiesService
             _ => []
         };
 
-        return members;
+        return members.Create(paginationRequest.PageIndex, paginationRequest.PageSize);
     }
 }
