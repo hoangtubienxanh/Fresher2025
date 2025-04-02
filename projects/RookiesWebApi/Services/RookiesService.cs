@@ -20,10 +20,7 @@ public class RookiesService(List<Person> backingStore) : IRookiesService
             return null;
         
         return backingStore
-            .Select((item, index) => (index, item))
-            .OrderBy(x => x.index)
-            .MaxBy(x => x.item.DateOfBirth)
-            .item;
+            .MaxBy(x => x.DateOfBirth);
     }
 
     public IReadOnlyList<string> GetAllMembersName()
