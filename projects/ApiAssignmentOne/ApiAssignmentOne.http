@@ -1,0 +1,68 @@
+@ApiAssignmentOne_HostAddress = http://localhost:5175
+
+### Get all todo tasks
+GET {{ApiAssignmentOne_HostAddress}}/api/TodoTask
+Accept: application/json
+
+### Get a specific task by ID
+GET {{ApiAssignmentOne_HostAddress}}/api/TodoTask/1
+Accept: application/json
+
+### Create a new task
+POST {{ApiAssignmentOne_HostAddress}}/api/TodoTask
+Content-Type: application/json
+
+{
+  "title": "Complete API Assignment",
+  "completed": false
+}
+
+### Create another task for testing
+POST {{ApiAssignmentOne_HostAddress}}/api/TodoTask
+Content-Type: application/json
+
+{
+  "title": "Write tests for API",
+  "completed": false
+}
+
+### Bulk create multiple tasks at once
+POST {{ApiAssignmentOne_HostAddress}}/api/TodoTask/bulk
+Content-Type: application/json
+
+[
+  {
+    "title": "Implement GET endpoints",
+    "completed": true
+  },
+  {
+    "title": "Implement POST endpoints",
+    "completed": true
+  },
+  {
+    "title": "Implement PUT endpoints",
+    "completed": false
+  }
+]
+
+### Update a task (change title and completion status)
+PUT {{ApiAssignmentOne_HostAddress}}/api/TodoTask/1
+Content-Type: application/json
+
+{
+  "title": "Complete API Assignment with excellence",
+  "completed": true
+}
+
+### Delete a specific task
+DELETE {{ApiAssignmentOne_HostAddress}}/api/TodoTask/2
+
+### Bulk delete multiple tasks
+DELETE {{ApiAssignmentOne_HostAddress}}/api/TodoTask/bulk
+Content-Type: application/json
+
+[
+  3,
+  4,
+  5
+]
