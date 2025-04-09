@@ -62,5 +62,9 @@ DELETE {{ApiAssignmentOne_HostAddress}}/api/task/bulk
 Content-Type: application/json
 
 {
-  "contains": [3, 4, 5]
+  "contains": [
+    3,
+    4,
+    5
+  ]
 }

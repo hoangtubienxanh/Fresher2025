@@ -1,4 +1,4 @@
-# Asp.net Core API Assignment - Part 1 + 2
+﻿# EF Core Assignment - Part 1 + 2
 
 ## Database Setup and Seeding
 
@@ -10,4 +10,4 @@ database: [docs](https://learn.microsoft.com/en-us/ef/core/modeling/data-seeding
 dotnet ef database update
 ```
 
-After creating the Person class, Rookies have to create a list of people as dummy data.
+Seeding data for Departments table
