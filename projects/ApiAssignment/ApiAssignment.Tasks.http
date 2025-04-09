@@ -1,15 +1,15 @@
 @ApiAssignmentOne_HostAddress = http://localhost:5175
 
 ### Get all todo tasks
-GET {{ApiAssignmentOne_HostAddress}}/api/TodoTask
+GET {{ApiAssignmentOne_HostAddress}}/api/task
 Accept: application/json
 
 ### Get a specific task by ID
-GET {{ApiAssignmentOne_HostAddress}}/api/TodoTask/1
+GET {{ApiAssignmentOne_HostAddress}}/api/task/1
 Accept: application/json
 
 ### Create a new task
-POST {{ApiAssignmentOne_HostAddress}}/api/TodoTask
+POST {{ApiAssignmentOne_HostAddress}}/api/task
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 }
 
 ### Create another task for testing
-POST {{ApiAssignmentOne_HostAddress}}/api/TodoTask
+POST {{ApiAssignmentOne_HostAddress}}/api/task
 Content-Type: application/json
 
 {
@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 
 ### Bulk create multiple tasks at once
-POST {{ApiAssignmentOne_HostAddress}}/api/TodoTask/bulk
+POST {{ApiAssignmentOne_HostAddress}}/api/task/bulk
 Content-Type: application/json
 
 [
@@ -46,7 +46,7 @@ Content-Type: application/json
 ]
 
 ### Update a task (change title and completion status)
-PUT {{ApiAssignmentOne_HostAddress}}/api/TodoTask/1
+PUT {{ApiAssignmentOne_HostAddress}}/api/task/1
 Content-Type: application/json
 
 {
@@ -55,14 +55,12 @@ Content-Type: application/json
 }
 
 ### Delete a specific task
-DELETE {{ApiAssignmentOne_HostAddress}}/api/TodoTask/2
+DELETE {{ApiAssignmentOne_HostAddress}}/api/task/2
 
 ### Bulk delete multiple tasks
-DELETE {{ApiAssignmentOne_HostAddress}}/api/TodoTask/bulk
+DELETE {{ApiAssignmentOne_HostAddress}}/api/task/bulk
 Content-Type: application/json
 
-[
-  3,
-  4,
-  5
-]
+{
+  "contains": [3, 4, 5]
+}

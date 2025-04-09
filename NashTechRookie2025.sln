@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RookiesWebApi", "projects\R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RookiesWebApp", "projects\RookiesWebApp\RookiesWebApp.csproj", "{10862AEC-EEB1-4C2F-B578-C21F1BD09771}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAssignmentOne", "projects\ApiAssignmentOne\ApiAssignmentOne.csproj", "{7527CA0D-EAAA-4FC4-9514-6F3FA00ECB0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiAssignment", "projects\ApiAssignment\ApiAssignment.csproj", "{7527CA0D-EAAA-4FC4-9514-6F3FA00ECB0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

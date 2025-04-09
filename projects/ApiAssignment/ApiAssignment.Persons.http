@@ -1,0 +1,49 @@
+@ApiAssignment_HostAddress = http://localhost:5175
+
+### Get all persons
+GET {{ApiAssignment_HostAddress}}/api/person
+Accept: application/json
+
+### Get person by ID
+GET {{ApiAssignment_HostAddress}}/api/person/2
+Accept: application/json
+
+### Create a new person
+POST {{ApiAssignment_HostAddress}}/api/person
+Content-Type: application/json
+
+{
+  "firstName": "Alex",
+  "lastName": "Johnson",
+  "gender": 0,
+  "dateOfBirth": "1988-07-15",
+  "birthPlace": "San Francisco"
+}
+
+### Update an existing person
+PUT {{ApiAssignment_HostAddress}}/api/person/2
+Content-Type: application/json
+
+{
+  "firstName": "Sarah",
+  "lastName": "Williams",
+  "gender": 1,
+  "dateOfBirth": "1992-03-21",
+  "birthPlace": "Boston"
+}
+
+### Delete a person
+DELETE {{ApiAssignment_HostAddress}}/api/person/3
+Accept: application/json
+
+### Filter persons by name
+GET {{ApiAssignment_HostAddress}}/api/person/filter/name?firstName=Sarah&lastName=Williams
+Accept: application/json
+
+### Filter persons by gender (0=Male, 1=Female)
+GET {{ApiAssignment_HostAddress}}/api/person/filter/gender/0
+Accept: application/json
+
+### Filter persons by birthplace
+GET {{ApiAssignment_HostAddress}}/api/person/filter/birthplace/New%20York
+Accept: application/json
