@@ -1,0 +1,97 @@
+@baseUrl = http://localhost:5245/api
+
+### 1. Test Case: Add Department, Add Employee with Department, Delete Department
+
+### 1.1 Create a new department
+POST {{baseUrl}}/department
+Content-Type: application/json
+
+{
+  "name": "Engineering"
+}
+
+### 1.2 Create an employee in the department (copy the department id from the response above)
+POST {{baseUrl}}/employee
+Content-Type: application/json
+
+{
+  "name": "John Smith",
+  "email": "john.smith@example.com",
+  "departmentId": 1
+}
+
+### 1.3 Delete department (this should also delete the employee)
+DELETE {{baseUrl}}/department/1
+
+
+### 2. Test Case: Add Project, Enroll Employee, Delete Project
+
+### 2.1 Create a new project
+POST {{baseUrl}}/project
+Content-Type: application/json
+
+{
+  "name": "Web Application"
+}
+
+### 2.2 Create an employee first (to enroll in the project)
+POST {{baseUrl}}/employee
+Content-Type: application/json
+
+{
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "departmentId": 1
+}
+
+### 2.3 Enroll employee in project
+POST {{baseUrl}}/project/1/enroll
+Content-Type: application/json
+
+{
+  "employeeId": 1,
+  "enable": true
+}
+
+### 2.4 Delete project
+DELETE {{baseUrl}}/project/1
+
+
+### 3. Test Case: Add Employee to Non-existent Department (should error)
+
+### 3.1 Try to create employee with non-existent department
+POST {{baseUrl}}/employee
+Content-Type: application/json
+
+{
+  "name": "Error Test",
+  "email": "error.test@example.com",
+  "departmentId": 999
+}
+
+### List all departments
+GET {{baseUrl}}/department
+
+### Get department by ID
+GET {{baseUrl}}/department/1
+
+### List all employees
+GET {{baseUrl}}/employee
+
+### Get employee by ID
+GET {{baseUrl}}/employee/1
+
+### List all projects
+GET {{baseUrl}}/project
+
+### Get project by ID
+GET {{baseUrl}}/project/1
+
+### Get employees with their departments
+GET {{baseUrl}}/employee/with-departments
+
+### Get employees with their projects
+GET {{baseUrl}}/employee/with-projects
+
+### Get high paid recent employees
+GET {{baseUrl}}/employee/filtered
