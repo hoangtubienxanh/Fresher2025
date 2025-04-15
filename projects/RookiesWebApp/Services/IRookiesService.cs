@@ -4,6 +4,7 @@ namespace RookiesWebApp.Services;
 
 public interface IRookiesService
 {
+    byte[] ExportMembersToExcel(PaginationRequest paginationRequest);
     PaginatedList<Person> GetAllMembers(PaginationRequest paginationRequest);
     void CreateMember(Person person);
     Person? GetMemberById(int id);
@@ -11,8 +12,7 @@ public interface IRookiesService
     void DeleteMember(Person person);
     PaginatedList<Person> GetAllMaleMembers(PaginationRequest paginationRequest);
     Person? GetOldestMember();
-    IReadOnlyList<string> GetAllMembersName();
-
+    string GetAllMembersName();
     PaginatedList<Person> GetAllMembersWithPredicate(ComparisonOperatorType specification,
         PaginationRequest paginationRequest);
 }

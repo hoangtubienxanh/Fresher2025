@@ -1,29 +1,17 @@
-﻿@model IEnumerable<string>
+﻿@model string
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Names";
 }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-    <tr>
-        <th>
-            Full Name
-        </th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item)
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<h1>Member Names</h1>
+
+<div class="card">
+    <div class="card-body">
+        @Model
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

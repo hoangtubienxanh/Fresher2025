@@ -171,15 +171,7 @@ public class RookiesController(IRookiesService rookiesService) : Controller
     [HttpGet]
     public ActionResult<Person> ExportAsExcel([AsParameters] PaginationRequest paginationRequest)
     {
-        using var memoryStream = new MemoryStream();
-        using var writer = new StreamWriter(memoryStream);
-        using var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-        csv.Context.RegisterClassMap<PersonCsvMapping>();
-        csv.WriteRecords(rookiesService.GetAllMembers(paginationRequest));
-
-        // from docs: https://joshclose.github.io/CsvHelper/getting-started/#:~:text=After%20you%20are%20done%20writing%2C%20you%20should%20call%20writer.Flush()%20to%20ensure%20that%20all%20the%20data%20in%20the%20writer%27s%20internal%20buffer%20has%20been%20flushed%20to%20the%20file
-        writer.Flush();
-
-        return File(memoryStream.ToArray(), "text/csv", "export.csv");
+        var fileContents = rookiesService.ExportMembersToExcel(paginationRequest);
+        return File(fileContents, "text/csv", "export.csv");
     }
 }
